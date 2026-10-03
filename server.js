@@ -8,7 +8,7 @@ const rateLimit=require('express-rate-limit');
 const path=require('path');
 const fs=require('fs');
 
-const app=express();
+const app=express();app.set('trust proxy', 1);
 const dataDir=path.join(__dirname,'data'); if(!fs.existsSync(dataDir)) fs.mkdirSync(dataDir,{recursive:true});
 const db=new Database(path.join(dataDir,'board.db')); db.pragma('journal_mode=WAL'); db.pragma('foreign_keys=ON');
 
